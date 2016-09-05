@@ -3,7 +3,8 @@ FROM alpine:3.4
 # This should replace develop git clone
 # ENV ANSIBLE_VERSION 2.1.1.0
 
-RUN apk add --no-cache python-dev \
+RUN apk add --no-cache bash \
+                     python-dev \
                      python \
                      py-jinja2 \
                      py-yaml \
