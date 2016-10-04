@@ -2,6 +2,7 @@ FROM alpine:3.4
 
 # This should replace develop git clone
 # ENV ANSIBLE_VERSION 2.1.1.0
+ENV ANSIBLE_LINT 3.3.3
 
 RUN apk add --no-cache bash \
                      python-dev \
@@ -20,7 +21,7 @@ RUN apk add --no-cache bash \
       && python setup.py install --prefix=/usr \
       && mkdir -p /etc/ansible \
       && echo localhost >> /etc/ansible/hosts \
-      && pip install ansible-lint \
+      && pip install ansible-lint==${ANSIBLE_LINT} \
       && cp /usr/share/zoneinfo/Europe/London /etc/localtime \
       && echo "Europe/London" >  /etc/timezone \
       && apk del tzdata python-dev \
