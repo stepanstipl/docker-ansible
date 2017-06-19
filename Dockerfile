@@ -15,6 +15,7 @@ RUN apk add --no-cache bash \
                      git \
                      openssh-client \
                      openssl \
+                     py-crypto \
                      py-jinja2 \
                      py-markupsafe \
                      py-paramiko \
