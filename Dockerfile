@@ -41,6 +41,6 @@ RUN apk add --no-cache bash \
       && apk del tzdata python-dev \
       && mkdir -p /root/.ssh \
       && ssh-keyscan -H github.com >> /root/.ssh/known_hosts \
-      && adduser -h "${ANSIBLE_HOME}" -s /sbin/nologin -u 1000 ansible
+      && adduser -h "${ANSIBLE_HOME}" -s /sbin/nologin -u 1000 -D ansible
 
 WORKDIR ${ANSIBLE_HOME}
