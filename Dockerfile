@@ -6,6 +6,7 @@ ENV ANSIBLE_CLI 1.11.107
 ENV ANSIBLE_DIR /ansible
 ENV ANSIBLE_USER=ansible
 ENV ANSIBLE_HOME=/home/ansible
+ENV ANSIBLE_UID=10000
 
 ENV MANPATH=${ANSIBLE_DIR}/docs/man:
 ENV PATH=${ANSIBLE_DIR}/bin:${PATH}
@@ -41,7 +42,7 @@ RUN apk add --no-cache bash \
       && apk del tzdata python-dev \
       && mkdir -p /root/.ssh \
       && ssh-keyscan -H github.com >> /root/.ssh/known_hosts \
-      && adduser -h "${ANSIBLE_HOME}" -s /sbin/nologin -u 1000 -D "${ANSIBLE_USER}" \
+      && adduser -h "${ANSIBLE_HOME}" -s /sbin/nologin -u "${ANSIBLE_UID}" -D "${ANSIBLE_USER}" \
       && echo chown -R "${ANSIBLE_USER}:${ANSIBLE_USER}" "${ANSIBLE_HOME}" \
       && chown -R "${ANSIBLE_USER}:${ANSIBLE_USER}" "${ANSIBLE_HOME}"
 
